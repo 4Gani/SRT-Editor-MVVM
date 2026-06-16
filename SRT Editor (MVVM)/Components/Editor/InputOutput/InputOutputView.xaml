@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="SRTEditor_MVVM.Components.Editor.InputOutput.InputOutputView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SRTEditor_MVVM.Components.Editor.InputOutput"
+             mc:Ignorable="d"
+             d:DesignHeight="285" d:DesignWidth="1060">
+
+    <Grid>
+        <Label Content="Select an SRT File:"
+               Width="200" Height="32" Margin="45,32,0,0"
+               HorizontalAlignment="Left" VerticalAlignment="Top"
+               FontWeight="Bold" FontSize="14"/>
+        <TextBox Text="{Binding SrtFileAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+                 Style="{StaticResource TextBoxes}" Width="825" Margin="70,69,0,0" AllowDrop="True" PreviewDragOver="TextBox_PreviewDragOver"
+                 PreviewDrop="TextBox_PreviewDrop"/>
+        <Button Content="Browse..." Command="{Binding InputBrowserCommand}"
+                Style="{StaticResource normalButton}" Margin="915,69,0,0"
+                HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <Label Content="Output Settings:"
+               Width="200" Height="32" Margin="45,120,0,0"
+               HorizontalAlignment="Left" VerticalAlignment="Top"
+               FontWeight="Bold" FontSize="14"/>
+        <RadioButton x:Name="rbtnOverwrite" Content="Overwrite Original File"
+                     IsChecked="{Binding IsOverWritable, Mode=TwoWay}"
+                     Width="202" Height="25" Margin="70,157,0,0"
+                     HorizontalAlignment="Left" VerticalAlignment="Top"
+                     VerticalContentAlignment="Center"/>
+        <RadioButton x:Name="rbtnNewFile" Content="Save as New File"
+                     Width="202" Height="22" Margin="70,182,0,0"
+                     HorizontalAlignment="Left" VerticalAlignment="Top"
+                     VerticalContentAlignment="Center"/>
+        <TextBox Text="{Binding SrtSaveLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"
+                 Style="{StaticResource TextBoxes}"
+                 IsEnabled="{Binding ElementName=rbtnNewFile, Path=IsChecked}"
+                 Width="825" Margin="70,218,0,0"/>
+        <Button Content="Browse..." Command="{Binding OutputBrowserCommand}"
+                Style="{StaticResource normalButton}" Margin="915,218,0,0"
+                IsEnabled="{Binding ElementName=rbtnNewFile, Path=IsChecked}"
+                HorizontalAlignment="Left" VerticalAlignment="Top"/>
+    </Grid>
+</UserControl>

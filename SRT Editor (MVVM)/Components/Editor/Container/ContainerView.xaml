@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="SRTEditor_MVVM.Components.Editor.Container.ContainerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SRTEditor_MVVM.Components.Editor.Container"
+             xmlns:InputOutput="clr-namespace:SRTEditor_MVVM.Components.Editor.InputOutput"
+             xmlns:Repairing="clr-namespace:SRTEditor_MVVM.Components.Editor.Repairing"
+             xmlns:Shifting="clr-namespace:SRTEditor_MVVM.Components.Editor.TimeShifting"
+             xmlns:Correcting="clr-namespace:SRTEditor_MVVM.Components.Editor.TimeCorrecting"
+             xmlns:Improving="clr-namespace:SRTEditor_MVVM.Components.Editor.ImprovingReadability"
+             mc:Ignorable="d"
+             d:DesignHeight="644" d:DesignWidth="1060">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type InputOutput:InputOutputViewModel}">
+                <InputOutput:InputOutputView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type Repairing:RepairingViewModel}">
+                <Repairing:RepairingView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type Shifting:TimeShiftingViewModel}">
+                <Shifting:TimeShiftingView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type Correcting:TimeCorrectingViewModel}">
+                <Correcting:TimeCorrectingView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type Improving:ImprovingReadabilityViewModel}">
+                <Improving:ImprovingReadabilityView />
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="285"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="{StaticResource appDisableBackground}"
+              Width="1060" Height="5" VerticalAlignment="Top"/>
+        <Grid Background="{StaticResource appColorBackground}"
+              Height="5" VerticalAlignment="Top" Margin="0,0,808,0"/>
+
+        <!-- Main -->
+        <ContentControl Grid.Row="0" Content="{Binding InputOutputViewModel}"/>
+
+        <!-- Tabs -->
+        <TabControl Width="685" BorderThickness="0" Padding="0,0,0,0" Grid.Row="1">
+
+            <TabItem Header="Repair" Width="170" Height="32"
+                     Background="{StaticResource appMainBackground}">
+                <ContentControl Content="{Binding RepairingViewModel}"/>
+            </TabItem>
+
+            <TabItem Header="Time Shifting" Width="170"
+                     Background="{StaticResource appMainBackground}">
+                <ContentControl Content="{Binding TimeShiftingViewModel}"/>
+            </TabItem>
+
+            <TabItem Header="Time Correcting" Width="170"
+                     Background="{StaticResource appMainBackground}">
+                <ContentControl Content="{Binding TimeCorrectingViewModel}"/>
+            </TabItem>
+
+            <TabItem Header="Improving Readability" Width="170"
+                     Background="{StaticResource appMainBackground}">
+                <ContentControl Content="{Binding ImprovingReadabilityViewModel}"/>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</UserControl>

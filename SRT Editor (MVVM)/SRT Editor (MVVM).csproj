@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>SRTEditor_MVVM</RootNamespace>
+    <AssemblyName>SRT Editor (MVVM)</AssemblyName>
+    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.142" />
+    <Resource Include="Assets\Error.png" />
+    <Resource Include="Assets\Warning.png" />
+    <Resource Include="Assets\Information.png" />
+    <Resource Include="Assets\Question.png" />
+    <Resource Include="Assets\Icon.png" />
+    <Resource Include="Assets\Icon.ico" />
+  </ItemGroup>
+
+</Project>
